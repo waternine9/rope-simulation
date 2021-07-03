@@ -10,8 +10,8 @@ def initPointPos(pointNumberVar, pointNumber, pointX, pointY,segmentLength):
         pointY.append(pointPosPicker*segmentLength)
         counter += 1
         pointPosPicker += 2
-
 def main():
+    
     clock = pygame.time.Clock()
     pygame.init()
     gravity = 9
@@ -32,6 +32,7 @@ def main():
     initPointPos(pointNumberVar, pointNumber, pointX, pointY,segmentLength)
     airResistence = 2
     for number in pointNumberVar:
+        
         velocityX.append(0)
         velocityY.append(0)
     while True:
@@ -40,7 +41,9 @@ def main():
         display.fill((255,255,255))
         for index in pointNumber:
             pygame.draw.circle(display, (0, 0, 0), (pointX[index], pointY[index]), 1)
+            
             if index > 0:
+                
                 # Forces
                 velocityY[index] += gravity - velocityY[index] / airResistence
                 pointY[index] += velocityY[index]
@@ -49,7 +52,9 @@ def main():
                 deltaY = pointY[index] - pointY[index - 1]
                 l = math.sqrt(deltaX ** 2 + deltaY ** 2)
                 deltaX = deltaX * (segmentLength/l)
+                
                 deltaY = deltaY * (segmentLength/l)
+                
                 pointX[index] = pointX[index - 1] + deltaX
                 pointY[index] = pointY[index - 1] + deltaY
                 velocityX[index] = deltaX
@@ -60,6 +65,7 @@ def main():
                 pointX[index] = mouseXY[0]
                 pointY[index] = mouseXY[1]
         for event in pygame.event.get():
+            
             if event.type==QUIT:
                 pygame.quit()
                 sys.exit()
