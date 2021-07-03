@@ -49,8 +49,10 @@ def main():
                 pointY[index] += velocityY[index]
                 # Forces
                 deltaX = pointX[index] - pointX[index - 1]
-                deltaY = pointY[index] - pointY[index - 1]
+                deltaY = pointY[index] - pointY[index - 1] 
+                
                 l = math.sqrt(deltaX ** 2 + deltaY ** 2)
+                
                 deltaX = deltaX * (segmentLength/l)
                 
                 deltaY = deltaY * (segmentLength/l)
@@ -60,8 +62,8 @@ def main():
                 velocityX[index] = deltaX
                 #velocityX[index] += pointX[index] - oldPointPosX[index] / 2
                 #velocityY[index] += pointY[index] - oldPointPosY[index] / 2
-
             else:
+                
                 pointX[index] = mouseXY[0]
                 pointY[index] = mouseXY[1]
         for event in pygame.event.get():
